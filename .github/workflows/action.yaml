@@ -1,0 +1,89 @@
+name: Deploy Terraform to AWS and GCP
+
+on:
+  push:
+    branches:
+      - stg
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./terraform
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: install node dependency
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::184136210319:role/github-action-aws
+          role-session-name: GitHubActionsTerraform
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      # - name: Authenticate to GCP
+      #   env:
+      #     GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/gcp-key.json
+      #   run: |
+      #     echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > $GOOGLE_APPLICATION_CREDENTIALS
+      #     gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+      #     gcloud config set project <YOUR_GCP_PROJECT_ID>
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -out=tfplan.out 
+        # Lưu file plan cho bước apply sau
+
+      - name: Upload Terraform Plan
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform-plan-yang
+          path: |
+            ./terraform/tfplan.out
+            ./terraform/.terraform
+            ./terraform/.terraform.lock.hcl
+
+  apply:
+    needs: plan  
+    runs-on: ubuntu-latest
+    environment: stg-environment-yang 
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: install node dependency
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::184136210319:role/github-action-aws
+          role-session-name: GitHubActionsTerraform
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      - name: Download Terraform Plan
+        uses: actions/download-artifact@v3
+        with:
+          name: terraform-plan-yang
+          path: ./terraform/
+      - name: Terraform Apply
+        run: terraform apply --auto-approve ./terraform/tfplan.out
