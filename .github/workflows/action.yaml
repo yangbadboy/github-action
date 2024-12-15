@@ -91,8 +91,14 @@ jobs:
         with:
           name: terraform-plan
           path: ./terraform
+      - name: Print current directory
+        run: pwd
+      - name: List files in root directory
+        run: ls -l
       - name: List files in terraform directory
-        run: ls -l ./terraform
+        run: ls -l ./terraform || echo "No terraform directory found"
+      - name: List files in full path terraform directory
+        run: ls -l /home/runner/work/github-action/github-action/terraform
 
       - name: Terraform Apply
         run: terraform apply --auto-approve ./terraform/tfplan.out
