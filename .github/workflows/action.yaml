@@ -49,14 +49,14 @@ jobs:
         run: terraform plan -out=tfplan.out 
         # Lưu file plan cho bước apply sau
 
-      # - name: Upload Terraform Plan
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: terraform-plan
-      #     path: |
-      #       ./terraform/tfplan.out
-      #       # ./terraform/.terraform
-      #       # ./terraform/.terraform.lock.hcl
+      - name: Upload Terraform Plan
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform-plan
+          path: |
+            ./terraform/tfplan.out
+            ./terraform/.terraform
+            ./terraform/.terraform.lock.hcl
 
   apply:
     needs: plan  
