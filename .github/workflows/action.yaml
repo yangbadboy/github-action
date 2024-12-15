@@ -57,6 +57,7 @@ jobs:
             terraform/tfplan
             terraform/.terraform
             terraform/.terraform.lock.hcl
+          include-hidden-files: true
 
   apply:
     needs: plan  
