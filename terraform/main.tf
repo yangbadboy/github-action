@@ -16,10 +16,10 @@ terraform {
   # }
   backend "s3" {
     bucket         = "github-action-yang"       
-    #key            = "path/to/terraform.tfstate" 
+    key            = "terraform/state-files/terraform.tfstate" 
     region         = "us-east-1"               
     dynamodb_table = "terraform-lock-table"     
-    #encrypt        = true                       
+    encrypt        = true                       
   }
 }
 
