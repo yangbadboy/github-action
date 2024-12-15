@@ -14,6 +14,13 @@ terraform {
   #   bucket = "cg-stg-gcp-terraform-state-yang"
   #   prefix = "terraform/state-files"
   # }
+  backend "s3" {
+    bucket         = "github-action-yang"       
+    #key            = "path/to/terraform.tfstate" 
+    region         = "us-east-1"               
+    dynamodb_table = "terraform-lock-table"     
+    #encrypt        = true                       
+  }
 }
 
 
