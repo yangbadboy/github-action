@@ -101,4 +101,5 @@ jobs:
       #   run: ls -l /home/runner/work/github-action/github-action/terraform
 
       - name: Terraform Apply
-        run: terraform apply --auto-approve /home/runner/work/github-action/github-action/terraformt/tfplan.out
+        # run: terraform apply --auto-approve /home/runner/work/github-action/github-action/terraformt/tfplan.out
+        run: terraform apply --auto-approve
