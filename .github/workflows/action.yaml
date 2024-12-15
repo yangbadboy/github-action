@@ -102,4 +102,8 @@ jobs:
 
       - name: Terraform Apply
         # run: terraform apply --auto-approve /home/runner/work/github-action/github-action/terraformt/tfplan.out
-        run: terraform apply -auto-approve tfplan
+        
+        run: |
+          chmod -R +x .terraform/providers/registry.terraform.io/hashicorp/aws/
+          chmod -R +x .terraform/providers/registry.terraform.io/hashicorp/google/
+          terraform apply -auto-approve tfplan
