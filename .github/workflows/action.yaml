@@ -15,7 +15,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./terraform
+        working-directory: terraform
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -54,9 +54,9 @@ jobs:
         with:
           name: terraform-plan
           path: |
-            ./terraform/tfplan
-            ./terraform/.terraform
-            ./terraform/.terraform.lock.hcl
+            terraform/tfplan
+            terraform/.terraform
+            terraform/.terraform.lock.hcl
 
   apply:
     needs: plan  
@@ -65,7 +65,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./terraform
+        working-directory: terraform
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -85,18 +85,18 @@ jobs:
         with:
           terraform_version: 1.6.5
       # - name: Create terraform directory if not exists
-      #   run: mkdir -p ./terraform
+      #   run: mkdir -p terraform
       - name: Download Terraform Plan
         uses: actions/download-artifact@v3
         with:
           name: terraform-plan
-          path: ./terraform
+          path: terraform
       # - name: Print current directory
       #   run: pwd
       # - name: List files in root directory
       #   run: ls -l
       # - name: List files in terraform directory
-      #   run: ls -l ./terraform || echo "No terraform directory found"
+      #   run: ls -l terraform || echo "No terraform directory found"
       # - name: List files in full path terraform directory
       #   run: ls -l /home/runner/work/github-action/github-action/terraform
 
