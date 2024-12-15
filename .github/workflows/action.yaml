@@ -46,7 +46,7 @@ jobs:
         run: terraform init
       - name: Terraform Plan
         id: plan
-        run: terraform plan -out=tfplan.out 
+        run: terraform plan -out tfplan
         # Lưu file plan cho bước apply sau
 
       - name: Upload Terraform Plan
@@ -54,7 +54,7 @@ jobs:
         with:
           name: terraform-plan
           path: |
-            ./terraform/tfplan.out
+            ./terraform/tfplan
             ./terraform/.terraform
             ./terraform/.terraform.lock.hcl
 
@@ -102,4 +102,4 @@ jobs:
 
       - name: Terraform Apply
         # run: terraform apply --auto-approve /home/runner/work/github-action/github-action/terraformt/tfplan.out
-        run: terraform apply --auto-approve tfplan.out
+        run: terraform apply --auto-approve tfplan
