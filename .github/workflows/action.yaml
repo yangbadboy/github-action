@@ -89,6 +89,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: terraform-plan-yang
-          path: ./terraform/
+          path: ./terraform
       - name: Terraform Apply
         run: terraform apply --auto-approve ./terraform/tfplan.out
