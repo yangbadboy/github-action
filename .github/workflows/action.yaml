@@ -42,6 +42,8 @@ jobs:
       #     echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > $GOOGLE_APPLICATION_CREDENTIALS
       #     gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
       #     gcloud config set project <YOUR_GCP_PROJECT_ID>
+      - name: Terraform Init
+        run: terraform init
       - name: Terraform Plan
         id: plan
         run: terraform plan -out=tfplan.out 
