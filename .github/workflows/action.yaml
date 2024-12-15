@@ -49,14 +49,14 @@ jobs:
         run: terraform plan -out=tfplan.out 
         # Lưu file plan cho bước apply sau
 
-      - name: Upload Terraform Plan
-        uses: actions/upload-artifact@v3
-        with:
-          name: terraform-plan
-          path: |
-            ./terraform/tfplan.out
-            # ./terraform/.terraform
-            # ./terraform/.terraform.lock.hcl
+      # - name: Upload Terraform Plan
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: terraform-plan
+      #     path: |
+      #       ./terraform/tfplan.out
+      #       # ./terraform/.terraform
+      #       # ./terraform/.terraform.lock.hcl
 
   apply:
     needs: plan  
@@ -84,21 +84,21 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.3.7
-      - name: Create terraform directory if not exists
-        run: mkdir -p ./terraform
-      - name: Download Terraform Plan
-        uses: actions/download-artifact@v3
-        with:
-          name: terraform-plan
-          path: ./terraform
-      - name: Print current directory
-        run: pwd
-      - name: List files in root directory
-        run: ls -l
-      - name: List files in terraform directory
-        run: ls -l ./terraform || echo "No terraform directory found"
-      - name: List files in full path terraform directory
-        run: ls -l /home/runner/work/github-action/github-action/terraform
+      # - name: Create terraform directory if not exists
+      #   run: mkdir -p ./terraform
+      # - name: Download Terraform Plan
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: terraform-plan
+      #     path: ./terraform
+      # - name: Print current directory
+      #   run: pwd
+      # - name: List files in root directory
+      #   run: ls -l
+      # - name: List files in terraform directory
+      #   run: ls -l ./terraform || echo "No terraform directory found"
+      # - name: List files in full path terraform directory
+      #   run: ls -l /home/runner/work/github-action/github-action/terraform
 
       - name: Terraform Apply
         run: terraform apply --auto-approve /home/runner/work/github-action/github-action/terraformt/tfplan.out
