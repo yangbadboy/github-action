@@ -52,7 +52,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan -out tfplan
-        # Lưu file plan cho bước apply sau
+        # Lư file plan cho bước apply sau
 
       - name: Upload Terraform Plan
         uses: actions/upload-artifact@v3
