@@ -25,15 +25,15 @@ terraform {
 
 
 
-# provider "google" {
-#   #credentials = file(var.gcp_credentials_file_path)
+provider "google" {
+  #credentials = file(var.gcp_credentials_file_path)
 
-#   # Should be able to parse project from credentials file but cannot.
-#   # Cannot convert string to map and cannot interpolate within variables.
-#   project = var.gcp_project_id
+  # Should be able to parse project from credentials file but cannot.
+  # Cannot convert string to map and cannot interpolate within variables.
+  project = "gamehub-stg1"
 
-#   region = var.gcp_region
-# }
+  region = "us-central1"
+}
 
 provider "aws" {
   region     = "us-east-1"
