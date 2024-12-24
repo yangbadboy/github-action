@@ -14,7 +14,7 @@ resource "aws_vpc_peering_connection" "foo" {
   peer_owner_id = "184136210319"
   peer_vpc_id   = data.aws_vpc.peer.id
   vpc_id        = aws_vpc.aws-vpc-github-action.id
-  peer_region   = aws.seoul.id
+  peer_region   = "ap-northeast-2"
   auto_accept   = true
 }
 
