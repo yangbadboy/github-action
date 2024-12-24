@@ -27,8 +27,7 @@ data "aws_subnet" "peer" {
 }
 data "aws_route_table" "peer" {
   provider = aws.seoul
-  # subnet_id = data.aws_subnet.peer.id
-  id = "rtb-09ddd7dd948ba34c2"
+  subnet_id = "subnet-0f948b7e031117087"
 }
 
 resource "aws_route" "route" {
