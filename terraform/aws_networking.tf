@@ -26,10 +26,12 @@ data "aws_subnet" "peer" {
   id = "subnet-0f948b7e031117087"
 }
 data "aws_route_table" "peer" {
+  provider = aws.seoul
   subnet_id = data.aws_subnet.peer.id
 }
 
 resource "aws_route" "route" {
+  provider = aws.seoul
   route_table_id            = data.aws_route_table.peer.id
   destination_cidr_block    = var.aws_network_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.test_peering.id
