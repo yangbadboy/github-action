@@ -22,6 +22,7 @@ resource "aws_vpc_peering_connection" "test_peering" {
 
 
 data "aws_subnet" "peer" {
+  provider = aws.seoul
   id = "subnet-0f948b7e031117087"
 }
 data "aws_route_table" "peer" {
