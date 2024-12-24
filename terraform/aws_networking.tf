@@ -29,7 +29,7 @@ data "aws_route_table" "peer" {
 }
 
 resource "aws_route" "route" {
-  route_table_id            = data.aws_route_table.selected.id
+  route_table_id            = data.aws_route_table.peer.id
   destination_cidr_block    = var.aws_network_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.test_peering.id
 }
