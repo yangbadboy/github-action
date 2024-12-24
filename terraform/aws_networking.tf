@@ -8,6 +8,7 @@ resource "aws_vpc" "aws-vpc-github-action" {
 }
 
 data "aws_vpc" "peer" {
+  provider = aws.seoul
   id = "vpc-0c445f5ad3d99c7d8"
 }
 resource "aws_vpc_peering_connection" "foo" {
