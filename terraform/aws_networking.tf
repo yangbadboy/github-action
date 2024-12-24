@@ -26,7 +26,7 @@ data "aws_subnet" "peer" {
   id = "subnet-0f948b7e031117087"
 }
 data "aws_route_table" "peer" {
-  subnet_id = data.aws_subnet.peer
+  subnet_id = data.aws_subnet.peer.id
 }
 
 resource "aws_route" "route" {
