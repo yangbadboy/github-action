@@ -104,7 +104,7 @@ jobs:
           path: terraform
       # - name: Print current directory
       #   run: pwd
-      # - name: List files in root director
+      # - name: List files in root directo
       #   run: ls -l
       # - name: List files in terraform directory
       #   run: ls -l terraform || echo "No terraform directory found"
