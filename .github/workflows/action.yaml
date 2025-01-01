@@ -62,7 +62,7 @@ jobs:
             terraform/tfplan
             terraform/.terraform
             terraform/.terraform.lock.hcl
-          # include-hidden-files: true
+            include-hidden-files: true
 
   apply:
     needs: plan  
@@ -116,6 +116,6 @@ jobs:
         
         run: |
           export TF_LOG="DEBUG"
-          # chmod -R +x .terraform/providers/registry.terraform.io/hashicorp/aws/
+          chmod -R +x .terraform/providers/registry.terraform.io/hashicorp/aws/
           chmod -R +x .terraform/providers/registry.terraform.io/hashicorp/google/
           terraform apply -auto-approve tfplan
