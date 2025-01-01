@@ -44,5 +44,5 @@ provider "aws" {
 #   region     = "ap-northeast-2"
 # }
 module "vm"  {
-  source = "../../../modules/vm"
+  source = "../../modules/vm"
 }
