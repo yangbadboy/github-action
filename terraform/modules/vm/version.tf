@@ -10,17 +10,7 @@ terraform {
       version = "~> 5.29.0"
     }
   }
-  # backend "gcs" {
-  #   bucket = "cg-stg-gcp-terraform-state-yang"
-  #   prefix = "terraform/state-files"
-  # }
-  backend "s3" {
-    bucket         = "github-action-yang"       
-    key            = "terraform/state-files/terraform.tfstate" 
-    region         = "us-east-1"               
-    dynamodb_table = "terraform-lock-table"     
-    encrypt        = true                       
-  }
+
 }
 
 
