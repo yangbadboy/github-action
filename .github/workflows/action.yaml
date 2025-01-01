@@ -115,7 +115,7 @@ jobs:
         # run: terraform apply --auto-approve /home/runner/work/github-action/github-action/terraformt/tfplan.out
         
         run: |
-          export TF_LOG="DEBUG"
-          chmod -R +x .terraform/providers/registry.terraform.io/hashicorp/aws/
-          chmod -R +x .terraform/providers/registry.terraform.io/hashicorp/google/
+          # export TF_LOG="DEBUG"
+          # chmod -R +x .terraform/providers/registry.terraform.io/hashicorp/aws/
+          # chmod -R +x .terraform/providers/registry.terraform.io/hashicorp/google/
           terraform apply -auto-approve tfplan
