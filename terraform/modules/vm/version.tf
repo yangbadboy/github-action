@@ -43,6 +43,3 @@ provider "aws" {
 #   alias = "seoul"
 #   region     = "ap-northeast-2"
 # }
-module "vm"  {
-  source = "../../modules/vm"
-}
