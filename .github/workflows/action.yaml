@@ -1,9 +1,9 @@
 name: Deploy Terraform to AWS and GCP
 
-on: workflow_dispatch
-  # push:
-  #   branches:
-  #     - stg
+on: 
+  push:
+    branches:
+      - stg
 
 permissions:
   id-token: write
