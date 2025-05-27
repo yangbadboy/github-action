@@ -1,4 +1,4 @@
-name: learning ong udemy
+name: learning on udemy
 on:
   push:
     branches:
@@ -10,4 +10,4 @@ jobs:
       - name: test  
         run: |
           echo "ducgiang.ng"
-          echo "${{ github.event }}"
+          echo "${{ toJSON(github.event) }}"
