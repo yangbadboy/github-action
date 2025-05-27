@@ -3,7 +3,7 @@ name: Deploy Terraform to AWS and GCP
 on: 
   push:
     branches:
-      - stg
+      - stg1
 
 permissions:
   id-token: write

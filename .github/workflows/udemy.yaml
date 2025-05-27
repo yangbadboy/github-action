@@ -10,4 +10,4 @@ jobs:
       - name: test  
         run: |
           echo "ducgiang.ng"
-          echo "${{ github }}"
+          echo "${{ github.event }}"
