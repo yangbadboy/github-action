@@ -1,0 +1,11 @@
+name: learning ong udemy
+on:
+  push:
+    branches:
+      - stg
+jobs:
+  job1:
+    steps:
+      - run: |
+        echo "ducgiang.ng"
+        echo "${{ github }}"
