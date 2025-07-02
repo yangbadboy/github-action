@@ -2,7 +2,7 @@ name: Build and Push to Artifact Registry (via key)
 
 on:
   push:
-    branches: [main]
+    branches: stg
 
 jobs:
   build-and-push:
