@@ -1,34 +1,48 @@
-name: Pull nginx and Push to GAR
+name: Push NGINX to GAR
 
 on:
-  workflow_dispatch:  # chạy thủ công hoặc bạn có thể dùng "push"
+  workflow_dispatch:
 
 jobs:
-  pull-and-push:
+  push:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Google Cloud SDK
+      - name: Write GCP service account key to file
+        run: |
+          cat <<EOF > key.json
+          {
+            "type": "service_account",
+            "project_id": "hochanhti",
+            "private_key_id": "e32a9bfe5348ea87937b91ebec455b9cd74a454a",
+            "private_key": "-----BEGIN PRIVATE KEY-----\\nMIIEvAIBADANBgkqhki...\\n-----END PRIVATE KEY-----\\n",
+            "client_email": "github-actions@hochanhti.iam.gserviceaccount.com",
+            "client_id": "109194280892379702558",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/github-actions%40hochanhti.iam.gserviceaccount.com"
+          }
+          EOF
+
+      - name: Authenticate with gcloud
         uses: google-github-actions/setup-gcloud@v2
         with:
+          service_account_key: ${{ github.workspace }}/key.json
           project_id: hochanhti
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
 
-      - name: Configure Docker to use Artifact Registry
+      - name: Configure Docker for Artifact Registry
         run: |
           gcloud auth configure-docker us-central1-docker.pkg.dev
 
-      - name: Pull nginx image from Docker Hub
+      - name: Pull and retag nginx
         run: |
           docker pull nginx:latest
-
-      - name: Retag nginx image for Artifact Registry
-        run: |
           docker tag nginx:latest us-central1-docker.pkg.dev/hochanhti/my-repo/nginx:latest
 
-      - name: Push image to Google Artifact Registry
+      - name: Push to Artifact Registry
         run: |
           docker push us-central1-docker.pkg.dev/hochanhti/my-repo/nginx:latest
