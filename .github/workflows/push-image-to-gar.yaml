@@ -1,11 +1,10 @@
-name: Build and Push to Artifact Registry (via key)
+name: Pull nginx and Push to GAR
 
 on:
-  push:
-    branches: stg
+  workflow_dispatch:  # chạy thủ công hoặc bạn có thể dùng "push"
 
 jobs:
-  build-and-push:
+  pull-and-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +21,14 @@ jobs:
         run: |
           gcloud auth configure-docker us-central1-docker.pkg.dev
 
-      - name: Build Docker image
+      - name: Pull nginx image from Docker Hub
         run: |
-          docker build -t us-central1-docker.pkg.dev/hochanhti/my-repo/my-image:latest .
+          docker pull nginx:latest
 
-      - name: Push image to Artifact Registry
+      - name: Retag nginx image for Artifact Registry
         run: |
-          docker push us-central1-docker.pkg.dev/hochanhti/my-repo/my-image:latest
+          docker tag nginx:latest us-central1-docker.pkg.dev/hochanhti/my-repo/nginx:latest
+
+      - name: Push image to Google Artifact Registry
+        run: |
+          docker push us-central1-docker.pkg.dev/hochanhti/my-repo/nginx:latest
