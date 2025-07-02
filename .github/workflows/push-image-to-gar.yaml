@@ -18,13 +18,14 @@ jobs:
             "type": "service_account",
             "project_id": "hochanhti",
             "private_key_id": "e32a9bfe5348ea87937b91ebec455b9cd74a454a",
-            "private_key": "-----BEGIN PRIVATE KEY-----\\nMIIEvAIBADANBgkqhki...\\n-----END PRIVATE KEY-----\\n",
+            "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDVkCv6pVKS3v+C\nQt+RbkzIn293CUrH/0VoxCZ9EEawyGkdWGxLrn+90qifcwd0XhQJnkDmv1XXNZ8F\ntkyVixyuzoss2a09PK/4pkPiRooMhTKvPlZBpX1317QExmwtlVuovl1ptIRqSmcE\ngSWh6OdqJ6bqKjGLwLds6iHejhuX+sIf28rpErYX5oRodlejPRJnYuefeQa7jH/l\n0Cu5Y7DFlfKFbrTqFr33H29J6uMqx7WkTTejL6/4p8uR9gImPgCE6nxVLhm4WDO/\nnhbIp5+PBCk84nitPnRe9sdsspfUR2d2sUZ0IhPrKptW06a4ZSljUJyeRHeCMou1\nxOIMzn2bAgMBAAECggEAJZ1iEaCCvbmnOTM8G2pY/dEPGeE6GaW9fOlnegme2c5C\nrVeAo4fVmgJ7jrH88yMK1nLYLYwvu1sHakMklAZPg/5/BuREHhANUnc+Z6FS+UeQ\nmMsa+C8EvVHxtBGaxiCTZ1I4M8EGvY3jPSjeDvltoQXg4UeTOHE2HWnTk1ZmR8sh\neLRPrcMrquYJBX7eSqTo03OWGFxnfOj1LCRFHdXWGQ+BUPokaN3WBcZ8F1AJrJ/X\nJzMLqCVz7IzZ58Jfazvuqa5LoQDGu2H8k0vEz1JsSe1xsq73Wo2Xwk/Di7MbJckq\nCXqei4j6GgMle91eAgtH9ntvxY3BDegeUrR5LeYmEQKBgQDvIbNRXuUlK2L9oujB\noRa5Vctvpc5KbqLQs088FHqwNEem6mFUmO66IK39LwmHMd323J7WmLBBFfBkC/83\n0DPNsLMFWEXGYIwFoPd+nTyirU9Bqovyo5JJYHivWyDtsXUvaYH2Pp7FF32OV/fq\nyz5nhjW/qWFhHsIQuYuZu57eMwKBgQDkoL/aWEftGAiS3nvIJDBARAmP4l54DUvu\nSpQ/U8MaAguNtRnl8F3G22Co9J7ZEDub5KnQSARYEH8mqVTo3JXsAE6toLRvX1J3\n8Z808YdAS3qscUGFLvod0pGRxVnj9NEz49Sgjmmn9dMTLtUgvPl4QqYc36au9UFp\n6YKVSdwq+QKBgBdMMD1AQpDxfi553bVnrWAXJL/W5pdH2iL9JT4UPLPIFCcF9L+a\nOr/1iR3+pC4AxMBVVEBSFfHxYj9ND+tvJGzoxzhBFmMyatHtkc9LIGo0+mDKbeIQ\n36K4fGmRNk8SF/mrjNbh2PQYysnAdk3wyT6qy7fFl9Avf/bDLP+oUN0TAoGANGpK\nMdPFgazd4lYRiNwLF+DBVHRwdhOOUe5VOIOKmj7XyUA41MebqEiJS5LxjBA1qlLt\nP6wTGuGFVSbDKbPQx092ukW6uEHhVVBW0LuC55GmaTx56f/QJeAtsX7OUf3BrKTS\nDZE41eH850v4Xs4UX6bgEISR4VCnE5IOdw185XkCgYAnnDzcCBLmBc6RoAZltuGC\nw4M1+ydROsiilHfKTX8N37veoCTczWppxZEHB4J+wM0nLgvl09glIc3eiLKyPDrX\nxBOWR+VpNrbIY1r0s9cG5Gh2RZr6HKRY6h6gankpGKjlXgyORUUwd0KesNFeDy0H\nnZpkKJ6HUjT9aNrw9RbWJA==\n-----END PRIVATE KEY-----\n",
             "client_email": "github-actions@hochanhti.iam.gserviceaccount.com",
             "client_id": "109194280892379702558",
             "auth_uri": "https://accounts.google.com/o/oauth2/auth",
             "token_uri": "https://oauth2.googleapis.com/token",
             "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/github-actions%40hochanhti.iam.gserviceaccount.com"
+            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/github-actions%40hochanhti.iam.gserviceaccount.com",
+            "universe_domain": "googleapis.com"
           }
           EOF
 
